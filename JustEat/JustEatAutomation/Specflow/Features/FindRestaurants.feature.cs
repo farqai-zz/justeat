@@ -83,7 +83,46 @@ this.ScenarioInitialize(scenarioInfo);
 #line 8
   testRunner.When("I search for restaurants", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 9
-  testRunner.Then("I should see some restaurants in \"AR51 1AA\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+  testRunner.Then("I should see some restaurants in AR51 1AA", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Sign up a restaurant")]
+        [NUnit.Framework.TestCaseAttribute("test", "user", "00000000000", "test@testme.com", "mbison", "fighter", "osaka", "sm1 3de", "indian", "collection", "10", null)]
+        public virtual void SignUpARestaurant(string firstname, string lastname, string mobile, string email, string restaurant, string street, string city, string postcode, string cuisine, string status, string drivers, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sign up a restaurant", null, exampleTags);
+#line 12
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 13
+testRunner.Given("I want to sign up to a restaurant", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 14
+testRunner.When(string.Format("I provide my \'{0}\' and \'{1}\' and \'{2}\' and \'{3}\' and \'{4}\' and \'{5}\' and \'{6}\' an" +
+                        "d \'{7}\' and \'{8}\' and \'{9}\' and \'{10}\'", firstname, lastname, mobile, email, restaurant, street, city, postcode, cuisine, status, drivers), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 15
+testRunner.Then("I have successfully registered my restaurant", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Login to the system as an existing user")]
+        [NUnit.Framework.TestCaseAttribute("test@testme.com", "test123!A", null)]
+        public virtual void LoginToTheSystemAsAnExistingUser(string email, string password, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login to the system as an existing user", null, exampleTags);
+#line 20
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 21
+testRunner.Given("I want to login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 22
+testRunner.When(string.Format("I provide my {0} and {1}", email, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 23
+testRunner.Then("I have logged in successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

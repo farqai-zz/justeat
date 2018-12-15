@@ -20,6 +20,10 @@ namespace JustEatAutomation.PageObjects.Pages
         public void InsertPostcode(string postCode)
         {
             _driver.FindElement(_postCode).SendKeys(postCode);
+        }
+
+        public void SearchOnPostCode()
+        {
             _driver.FindElement(_postCode).SendKeys(Keys.Enter);
         }
     }
