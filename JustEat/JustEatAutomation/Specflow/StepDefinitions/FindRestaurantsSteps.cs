@@ -18,6 +18,7 @@ namespace JustEat.Specflow.StepDefinitions
         private IWebDriver _webDriver;
         private HomePage _homePage;
         private RestaurantsPage _restaurantsPage;
+        private RestaurantSignUpPage _restaurantSignUpPage;
 
         #region Given
         [Given(@"I want food in ""(.*)""")]
@@ -31,7 +32,9 @@ namespace JustEat.Specflow.StepDefinitions
         [Given(@"I want to sign up to a restaurant")]
         public void GivenIWantToSignUpToARestaurant()
         {
-            ScenarioContext.Current.Pending();
+            _webDriver = GetWebDriver();
+            _homePage = new HomePage(_webDriver);
+            _homePage.GoToRestaurantSignUpForm();
         }
 
         [Given(@"I want to login")]
@@ -52,9 +55,11 @@ namespace JustEat.Specflow.StepDefinitions
         }
 
         [When(@"I provide my '(.*)' and '(.*)' and '(.*)' and '(.*)' and '(.*)' and '(.*)' and '(.*)' and '(.*)' and '(.*)' and '(.*)' and '(.*)'")]
-        public void WhenIProvideMyAndAndAndAndAndAndAndAndAndAnd(string p0, string p1, int p2, string p3, string p4, string p5, string p6, string p7, string p8, string p9, int p10)
+        public void WhenIProvideMyAndAndAndAndAndAndAndAndAndAnd(string p0, string p1, string p2, string p3, string p4, string p5, string p6, string p7, string p8, string p9, string p10)
         {
-            ScenarioContext.Current.Pending();
+           _restaurantSignUpPage = new RestaurantSignUpPage(_webDriver);
+           _restaurantSignUpPage.FillWizardForm(p4,p7,p2,p3);
+           _restaurantSignUpPage.SubmitWizardForm();
         }
 
         [When(@"I provide my test@testme\.com and test(.*)!A")]
@@ -91,4 +96,6 @@ namespace JustEat.Specflow.StepDefinitions
 
         #endregion
     }
+
+    
 }
