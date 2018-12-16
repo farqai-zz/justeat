@@ -4,7 +4,7 @@ Just Eat Automation Tests that test for searching for a restaurant, login and re
 ## Running Requirements
 
 ### Software
-* Wndows 10 
+* Windows 10 
 * Visual Studio 2017
 * .NET Framework 4.6.1
 * ReSharper (latest)
@@ -33,7 +33,7 @@ System.Configuration reference added in the project from References management i
 * Build solution
 * Using Resharper Unit Tests option, run the tests
 
-## Additional Comments
+## Tests
 1) Test "Search for restaurants in an area" searches for a given postcode in specflow test data and checks that at least 1 restaurant is found.
 
 2) Test "Sign up a restaurant" uses the sign up restaurant form from the home page footer to register a restaurant. The caveat with this test is that a particular sign up wizard stopped appearing the next day from when the test was written. This looks like a user based experience behaviour of the site which I have no control of. Therefore I had to update this test by introducing more page objects and adding further step options to cater for the wizard, but I had preferred to spend time in updating my explicit thread.sleep waits to implicit waits on this test.
