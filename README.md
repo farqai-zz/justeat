@@ -9,7 +9,7 @@ Just Eat Automation Test
 * ReSharper (latest)
 
 ### Plugins & Assembiles
-Specflow [plugin!](https://marketplace.visualstudio.com/items?itemName=TechTalkSpecFlowTeam.SpecFlowforVisualStudio2017)
+Specflow [plugin](https://marketplace.visualstudio.com/items?itemName=TechTalkSpecFlowTeam.SpecFlowforVisualStudio2017)
 
 System.Configuration reference added in the project from References management in Visual Studio
 
