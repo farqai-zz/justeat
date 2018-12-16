@@ -72,12 +72,13 @@ namespace JustEat.Specflow.StepDefinitions
            _restaurantSignUpPage.SubmitForm();
         }
 
-        [When(@"I provide my '(.*)' and '(.*)'")]
-        public void WhenIProvideMyAnd(string email, string password)
+        [When(@"I provide '(.*)' and '(.*)'")]
+        public void WhenIProvideAnd(string email, string password)
         {
-            _loginPage.FillLoginForm(email,password);
+            _loginPage.FillLoginForm(email, password);
             _loginPage.Login();
         }
+
 
         #endregion
 

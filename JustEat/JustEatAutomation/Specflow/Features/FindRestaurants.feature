@@ -19,7 +19,7 @@ Examples:
 
 Scenario Outline: Cannot login to the system as an unknown user
 Given I want to login
-When I provide my '<email>' and '<password>'
+When I provide '<email>' and '<password>'
 Then I have been I cannot be logged in 
 Examples: 
 | email           | password  |
