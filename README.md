@@ -4,9 +4,9 @@ Just Eat Automation Test
 ## Running Requirements
 
 ### Software
-1) Visual Studio 2017
-2).NET Framework 4.6.1
-3) ReSharper (latest)
+* Visual Studio 2017
+* .NET Framework 4.6.1
+* ReSharper (latest)
 
 ### Plugins & Assembiles
 Specflow [plugin!](https://marketplace.visualstudio.com/items?itemName=TechTalkSpecFlowTeam.SpecFlowforVisualStudio2017)
