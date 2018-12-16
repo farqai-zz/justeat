@@ -109,11 +109,11 @@ testRunner.Then("I have successfully registered my restaurant", ((string)(null))
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Login to the system as an existing user")]
+        [NUnit.Framework.DescriptionAttribute("Cannot login to the system as an unknown user")]
         [NUnit.Framework.TestCaseAttribute("test@testme.com", "test123!A", null)]
-        public virtual void LoginToTheSystemAsAnExistingUser(string email, string password, string[] exampleTags)
+        public virtual void CannotLoginToTheSystemAsAnUnknownUser(string email, string password, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login to the system as an existing user", null, exampleTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cannot login to the system as an unknown user", null, exampleTags);
 #line 20
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -122,7 +122,7 @@ testRunner.Given("I want to login", ((string)(null)), ((TechTalk.SpecFlow.Table)
 #line 22
 testRunner.When(string.Format("I provide my \'{0}\' and \'{1}\'", email, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 23
-testRunner.Then("I have logged in successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+testRunner.Then("I have been I cannot be logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

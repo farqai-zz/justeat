@@ -17,10 +17,10 @@ Examples:
 | firstname | lastname | mobile      | email           | restaurant | street  | city  | postcode | cuisine | status         | drivers |
 | test      | user     | 00000000000 | test@testme.com | mbison     | fighter | osaka | sm1 3de  | Diner   | collectionOnly | 1 to 2  |
 
-Scenario Outline: Login to the system as an existing user
+Scenario Outline: Cannot login to the system as an unknown user
 Given I want to login
 When I provide my '<email>' and '<password>'
-Then I have logged in successfully 
+Then I have been I cannot be logged in 
 Examples: 
 | email           | password  |
 | test@testme.com | test123!A |

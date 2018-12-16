@@ -96,16 +96,15 @@ namespace JustEat.Specflow.StepDefinitions
         {
            Assert.That(_restaurantSignUpPage.Title().Equals("Thank you for getting in touch!"), "Unable to register restaurant.");
         }
-
-        [Then(@"I have logged in successfully")]
-        public void ThenIHaveLoggedInSuccessfully()
+        
+        [Then(@"I have been I cannot be logged in")]
+        public void ThenIHaveBeenICannotBeLoggedIn()
         {
-            Assert.That(_loginPage.HasLoggedIn().Equals(true),"User was unable to login");
+            Assert.That(_loginPage.HasLoggedIn().Equals(true), "User was able to login");
         }
-
 
         #endregion
     }
 
-    
+
 }
