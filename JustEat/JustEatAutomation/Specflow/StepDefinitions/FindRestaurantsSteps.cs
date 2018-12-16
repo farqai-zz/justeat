@@ -17,8 +17,10 @@ namespace JustEat.Specflow.StepDefinitions
 
         private IWebDriver _webDriver;
         private HomePage _homePage;
-        private RestaurantsPage _restaurantsPage;
+        private RestaurantsListPage _restaurantsListPage;
+        private RestaurantSignUpWizardPage _restaurantSignUpWizardPage;
         private RestaurantSignUpPage _restaurantSignUpPage;
+        private LoginPage _loginPage;
 
         #region Given
         [Given(@"I want food in ""(.*)""")]
@@ -40,7 +42,10 @@ namespace JustEat.Specflow.StepDefinitions
         [Given(@"I want to login")]
         public void GivenIWantToLogin()
         {
-            ScenarioContext.Current.Pending();
+            _webDriver = GetWebDriver();
+            _homePage = new HomePage(_webDriver);
+            _homePage.GoToLoginPage();
+            _loginPage = new LoginPage(_webDriver);
         }
 
 
@@ -55,19 +60,24 @@ namespace JustEat.Specflow.StepDefinitions
         }
 
         [When(@"I provide my '(.*)' and '(.*)' and '(.*)' and '(.*)' and '(.*)' and '(.*)' and '(.*)' and '(.*)' and '(.*)' and '(.*)' and '(.*)'")]
-        public void WhenIProvideMyAndAndAndAndAndAndAndAndAndAnd(string p0, string p1, string p2, string p3, string p4, string p5, string p6, string p7, string p8, string p9, string p10)
+        public void WhenIProvideMyAndAndAndAndAndAndAndAndAndAnd(string firstName, string lastName, string mobile, string email, string restaurant, string street, string city, string postCode, string cuisine, string status, string drivers)
         {
+           _restaurantSignUpWizardPage = new RestaurantSignUpWizardPage(_webDriver);
+           _restaurantSignUpWizardPage.FillWizardForm(restaurant,postCode,mobile,email);
+           _restaurantSignUpWizardPage.SubmitWizardForm();
            _restaurantSignUpPage = new RestaurantSignUpPage(_webDriver);
-           _restaurantSignUpPage.FillWizardForm(p4,p7,p2,p3);
-           _restaurantSignUpPage.SubmitWizardForm();
+           _restaurantSignUpPage.FillForm(firstName,lastName,street,city,postCode);
+           _restaurantSignUpPage.SelectCuisine(cuisine);
+           _restaurantSignUpPage.SelectFulfillment(status);
+           _restaurantSignUpPage.SubmitForm();
         }
 
-        [When(@"I provide my test@testme\.com and test(.*)!A")]
-        public void WhenIProvideMyTestTestme_ComAndTestA(int p0)
+        [When(@"I provide my '(.*)' and '(.*)'")]
+        public void WhenIProvideMyAnd(string email, string password)
         {
-            ScenarioContext.Current.Pending();
+            _loginPage.FillLoginForm(email,password);
+            _loginPage.Login();
         }
-
 
         #endregion
 
@@ -76,21 +86,21 @@ namespace JustEat.Specflow.StepDefinitions
         [Then(@"I should see some restaurants in AR(.*)AA")]
         public void ThenIShouldSeeSomeRestaurantsInARAA(string p0)
         {
-            _restaurantsPage = new RestaurantsPage(_webDriver);
-            var restaurants = _restaurantsPage.GetListOfRestaurants();
-            Assert.That(restaurants.Count > 0);
+            _restaurantsListPage = new RestaurantsListPage(_webDriver);
+            var restaurants = _restaurantsListPage.GetListOfRestaurants();
+            Assert.That(restaurants.Count > 0,"No restaurants found for this post code.");
         }
 
         [Then(@"I have successfully registered my restaurant")]
         public void ThenIHaveSuccessfullyRegisteredMyRestaurant()
         {
-            ScenarioContext.Current.Pending();
+           Assert.That(_restaurantSignUpPage.Title().Equals("Thank you for getting in touch!"), "Unable to register restaurant.");
         }
 
         [Then(@"I have logged in successfully")]
         public void ThenIHaveLoggedInSuccessfully()
         {
-            ScenarioContext.Current.Pending();
+            Assert.That(_loginPage.HasLoggedIn().Equals(true),"User was unable to login");
         }
 
 

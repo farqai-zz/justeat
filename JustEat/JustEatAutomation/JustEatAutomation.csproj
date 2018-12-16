@@ -58,11 +58,16 @@
     <Reference Include="WebDriver, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Selenium.WebDriver.3.141.0\lib\net45\WebDriver.dll</HintPath>
     </Reference>
+    <Reference Include="WebDriver.Support, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.Support.3.141.0\lib\net45\WebDriver.Support.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PageObjects\Pages\HomePage.cs" />
+    <Compile Include="PageObjects\Pages\LoginPage.cs" />
     <Compile Include="PageObjects\Pages\RestaurantSignUpPage.cs" />
-    <Compile Include="PageObjects\Pages\RestaurantsPage.cs" />
+    <Compile Include="PageObjects\Pages\RestaurantSignUpWizardPage.cs" />
+    <Compile Include="PageObjects\Pages\RestaurantsListPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Specflow\Features\FindRestaurants.feature.cs">
       <DependentUpon>FindRestaurants.feature</DependentUpon>
@@ -73,6 +78,7 @@
     <Compile Include="Utilities\BaseBeforeAndAfter.cs" />
     <Compile Include="Utilities\DriverSetting.cs" />
     <Compile Include="Utilities\WebDriverConfig.cs" />
+    <Compile Include="Utilities\WebDriverExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

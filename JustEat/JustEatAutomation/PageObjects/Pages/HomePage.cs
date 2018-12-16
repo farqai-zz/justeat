@@ -3,50 +3,46 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JustEatAutomation.Utilities;
 using OpenQA.Selenium;
 
 namespace JustEatAutomation.PageObjects.Pages
 {
     public class HomePage
     {
-        private readonly IWebDriver _driver;
+        private readonly IWebDriver _webDriver;
+        private readonly WebDriverExtension extension;
         private readonly By _postCodeTxtBox = By.Id("postcode");
         private readonly By _restaurantSignUpLink = By.LinkText("Restaurant sign up");
-       // private readonly By _restaurantInterest = By.LinkText("Register interest");
+        private readonly By _loginLink = By.LinkText("Log in");
+
+        // private readonly By _restaurantInterest = By.LinkText("Register interest");
 
         public HomePage(IWebDriver driver)
         {
-            this._driver = driver;
+            this._webDriver = driver;
+            extension = new WebDriverExtension(_webDriver);
         }
 
         public void InsertPostcode(string postCode)
         {
-            _driver.FindElement(_postCodeTxtBox).SendKeys(postCode);
+         _webDriver.FindElement(_postCodeTxtBox).SendKeys(postCode);
         }
 
         public void SearchOnPostCode()
         {
-            _driver.FindElement(_postCodeTxtBox).SendKeys(Keys.Enter);
+            _webDriver.FindElement(_postCodeTxtBox).SendKeys(Keys.Enter);
         }
 
         public void GoToRestaurantSignUpForm()
         {
-             ScrollToView(_driver.FindElement(_restaurantSignUpLink));
-            _driver.FindElement(_restaurantSignUpLink).Click();
+             extension.ScrollToView(_webDriver.FindElement(_restaurantSignUpLink));
+            _webDriver.FindElement(_restaurantSignUpLink).Click();
         }
 
-        public void ScrollToView(IWebElement element)
+        public void GoToLoginPage()
         {
-            if (element.Location.Y > 200)
-            {
-                ScrollTo(0, element.Location.Y - 100); // Make sure element is in the view but below the top navigation pane
-            }
-
-        }
-        public void ScrollTo(int xPosition = 0, int yPosition = 0)
-        {
-            var js = $"window.scrollTo({xPosition}, {yPosition})";
-            ((IJavaScriptExecutor)_driver).ExecuteScript(js);
+            _webDriver.FindElement(_loginLink).Click();
         }
     }
 }

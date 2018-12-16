@@ -90,7 +90,7 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Sign up a restaurant")]
-        [NUnit.Framework.TestCaseAttribute("test", "user", "00000000000", "test@testme.com", "mbison", "fighter", "osaka", "sm1 3de", "indian", "collection", "10", null)]
+        [NUnit.Framework.TestCaseAttribute("test", "user", "00000000000", "test@testme.com", "mbison", "fighter", "osaka", "sm1 3de", "Diner", "collectionOnly", "1 to 2", null)]
         public virtual void SignUpARestaurant(string firstname, string lastname, string mobile, string email, string restaurant, string street, string city, string postcode, string cuisine, string status, string drivers, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sign up a restaurant", null, exampleTags);
@@ -120,7 +120,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 21
 testRunner.Given("I want to login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 22
-testRunner.When(string.Format("I provide my {0} and {1}", email, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+testRunner.When(string.Format("I provide my \'{0}\' and \'{1}\'", email, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 23
 testRunner.Then("I have logged in successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden

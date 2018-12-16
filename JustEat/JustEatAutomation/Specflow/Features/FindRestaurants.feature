@@ -14,12 +14,12 @@ Given I want to sign up to a restaurant
 When I provide my '<firstname>' and '<lastname>' and '<mobile>' and '<email>' and '<restaurant>' and '<street>' and '<city>' and '<postcode>' and '<cuisine>' and '<status>' and '<drivers>'
 Then I have successfully registered my restaurant
 Examples: 
-| firstname | lastname | mobile      | email           | restaurant | street  | city  | postcode | cuisine | status     | drivers |
-| test      | user     | 00000000000 | test@testme.com | mbison     | fighter | osaka | sm1 3de  | indian  | collection | 10      |
+| firstname | lastname | mobile      | email           | restaurant | street  | city  | postcode | cuisine | status         | drivers |
+| test      | user     | 00000000000 | test@testme.com | mbison     | fighter | osaka | sm1 3de  | Diner   | collectionOnly | 1 to 2  |
 
 Scenario Outline: Login to the system as an existing user
 Given I want to login
-When I provide my <email> and <password>
+When I provide my '<email>' and '<password>'
 Then I have logged in successfully 
 Examples: 
 | email           | password  |
