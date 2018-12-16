@@ -1,28 +1,29 @@
 # justeat
 Just Eat Automation Test
 
-#Running Requirements
+## Running Requirements
 
-##Software
+### Software
 1) Visual Studio 2017
 2).NET Framework 4.6.1
 3) ReSharper (latest)
 
-##Plugins & Assembiles
-Specflow [plugin] https://marketplace.visualstudio.com/items?itemName=TechTalkSpecFlowTeam.SpecFlowforVisualStudio2017
+### Plugins & Assembiles
+Specflow [plugin!](https://marketplace.visualstudio.com/items?itemName=TechTalkSpecFlowTeam.SpecFlowforVisualStudio2017)
+
 System.Configuration reference added in the project from References management in Visual Studio
 
-##Nuget Packages
-NUnit version="3.0.0"
-Selenium.Support version="3.141.0"
-Selenium.WebDriver version="3.141.0" 
-Selenium.WebDriver.ChromeDriver
-SpecFlow version="2.4.0"
-SpecFlow.NUnit version="2.4.0" 
-System.ValueTuple version="4.3.0"
-Newtonsoft.Json version="10.0.3"
+### Nuget Packages
+* NUnit version="3.0.0"
+* Selenium.Support version="3.141.0"
+* Selenium.WebDriver version="3.141.0" 
+* Selenium.WebDriver.ChromeDriver
+* SpecFlow version="2.4.0"
+* SpecFlow.NUnit version="2.4.0" 
+* System.ValueTuple version="4.3.0"
+* Newtonsoft.Json version="10.0.3"
 
-#Additional Comments
+## Additional Comments
 1) Test "Search for restaurants in an area" searches for a given postcode in specflow test data and checks that at least 1 restaurant is found.
 
 2) Test "Sign up a restaurant" uses the sign up restaurant form from the home page footer to register a restaurant. The problem with this test is that a particular
@@ -33,4 +34,3 @@ Sometimes the wizard does appear and this then makes this test run and pass howe
 
 3) Test "Cannot login to the system as an unknown user" is a straightforward test to not let a malicious user login. I opted for this negative case as appose to standard successful login
 test due to not having an already registered user at hand.
-
