@@ -23,14 +23,18 @@ System.Configuration reference added in the project from References management i
 * System.ValueTuple version="4.3.0"
 * Newtonsoft.Json version="10.0.3"
 
+## Running Steps
+* After installing advised software, clone the repro from github
+* Open the .sln file
+* Restore/Install all mentioned Nuget packages in Visual Studio
+* Add the System.Configuration reference in the project from References management in Visual Studio
+* Ensure you have installed Selenium.WebDriver.ChromeDriver Nuget package by author jsakamoto
+* Build solution
+* Using Resharper Unit Tests option, run the tests
+
 ## Additional Comments
 1) Test "Search for restaurants in an area" searches for a given postcode in specflow test data and checks that at least 1 restaurant is found.
 
-2) Test "Sign up a restaurant" uses the sign up restaurant form from the home page footer to register a restaurant. The problem with this test is that a particular
-sign up wizard stopped appearing the next day from when the tests were written. This looks like a random user based behaviour of the site which I have no control of. 
-Due to the shortage of time and that test was already completed and working before this problem occurred, I was unable to spend time in maintaining this issue. Conceptually
-I would deal with this problem using an if statement to check for wizard and perform actions accordingly. 
-Sometimes the wizard does appear and this then makes this test run and pass however.
+2) Test "Sign up a restaurant" uses the sign up restaurant form from the home page footer to register a restaurant. The caveat with this test is that a particular sign up wizard stopped appearing the next day from when the test was written. This looks like a user based experience behaviour of the site which I have no control of. Therefore I had to update this test by introducing more page objects and adding further step options to cater for the wizard, but I had preferred to spend time in updating my explicit thread.sleep waits to implicit waits on this test.
 
-3) Test "Cannot login to the system as an unknown user" is a straightforward test to not let a malicious user login. I opted for this negative case as appose to standard successful login
-test due to not having an already registered user at hand.
+3) Test "Can login to the system successfully" is a straightforward test to let a registered user login. I have registered a dummy user using a mailinator account at the time of writing this test.
