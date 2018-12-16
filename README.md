@@ -1,5 +1,5 @@
 # justeat
-Just Eat Automation Test
+Just Eat Automation Tests that test for searching for a restaurant, login and resturant sign up journeys on the [just eat](https://just-eat.co.uk) domain.
 
 ## Running Requirements
 
