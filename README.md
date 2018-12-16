@@ -1,7 +1,7 @@
 # justeat
 Just Eat Automation Tests that test for searching for a restaurant, login and resturant sign up journeys on the [just eat](https://just-eat.co.uk) domain.
 
-## Running Requirements
+## Requirements
 
 ### Software
 * Windows 10 
@@ -9,7 +9,7 @@ Just Eat Automation Tests that test for searching for a restaurant, login and re
 * .NET Framework 4.6.1
 * ReSharper (latest)
 
-### Plugins & Assembiles
+### Plugins & Assemblies
 Specflow [plugin](https://marketplace.visualstudio.com/items?itemName=TechTalkSpecFlowTeam.SpecFlowforVisualStudio2017)
 
 System.Configuration reference added in the project from References management in Visual Studio
