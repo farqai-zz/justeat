@@ -4,6 +4,7 @@ Just Eat Automation Test
 ## Running Requirements
 
 ### Software
+* Wndows 10 
 * Visual Studio 2017
 * .NET Framework 4.6.1
 * ReSharper (latest)
