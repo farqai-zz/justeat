@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using JustEat.Utilities;
-using JustEatAutomation.PageObjects.Pages;
+﻿using JustEatAutomation.PageObjects.Pages;
 using JustEatAutomation.Utilities;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -14,13 +9,14 @@ namespace JustEat.Specflow.StepDefinitions
     [Binding]
     public sealed class FindRestaurantsSteps : DriverSetting
     {
-
         private IWebDriver _webDriver;
         private HomePage _homePage;
         private RestaurantsListPage _restaurantsListPage;
         private RestaurantSignUpWizardPage _restaurantSignUpWizardPage;
         private RestaurantSignUpPage _restaurantSignUpPage;
+        private SignUpPage _signUpPage;
         private LoginPage _loginPage;
+        private bool _wizard;
 
         #region Given
         [Given(@"I want food in ""(.*)""")]
@@ -62,14 +58,28 @@ namespace JustEat.Specflow.StepDefinitions
         [When(@"I provide my '(.*)' and '(.*)' and '(.*)' and '(.*)' and '(.*)' and '(.*)' and '(.*)' and '(.*)' and '(.*)' and '(.*)' and '(.*)'")]
         public void WhenIProvideMyAndAndAndAndAndAndAndAndAndAnd(string firstName, string lastName, string mobile, string email, string restaurant, string street, string city, string postCode, string cuisine, string status, string drivers)
         {
-           _restaurantSignUpWizardPage = new RestaurantSignUpWizardPage(_webDriver);
-           _restaurantSignUpWizardPage.FillWizardForm(restaurant,postCode,mobile,email);
-           _restaurantSignUpWizardPage.SubmitWizardForm();
-           _restaurantSignUpPage = new RestaurantSignUpPage(_webDriver);
-           _restaurantSignUpPage.FillForm(firstName,lastName,street,city,postCode);
-           _restaurantSignUpPage.SelectCuisine(cuisine);
-           _restaurantSignUpPage.SelectFulfillment(status);
-           _restaurantSignUpPage.SubmitForm();
+            _restaurantSignUpWizardPage = new RestaurantSignUpWizardPage(_webDriver);
+            _wizard = _restaurantSignUpWizardPage.IsWizardPresent();
+            if (_wizard)
+            {
+                _restaurantSignUpWizardPage.FillWizardForm(restaurant, postCode, mobile, email);
+                _restaurantSignUpWizardPage.SubmitWizardForm();
+                _restaurantSignUpPage = new RestaurantSignUpPage(_webDriver);
+                _restaurantSignUpPage.FillForm(firstName, lastName, street, city, postCode);
+                _restaurantSignUpPage.SelectCuisine(cuisine);
+                _restaurantSignUpPage.SelectFulfillment(status);
+                _restaurantSignUpPage.SubmitForm();
+            }
+            else
+            {
+                _restaurantSignUpWizardPage.RegisterInterest();
+                _signUpPage = new SignUpPage(_webDriver);
+                _signUpPage.FillForm(firstName,lastName,mobile,email,restaurant,street,city,postCode);
+                _signUpPage.SelectCuisine(cuisine);
+                _signUpPage.SelectFulfillment(status);
+                _signUpPage.SelectDrivers(drivers);
+                _signUpPage.SubmitForm();
+            }
         }
 
         [When(@"I provide '(.*)' and '(.*)'")]
@@ -95,17 +105,23 @@ namespace JustEat.Specflow.StepDefinitions
         [Then(@"I have successfully registered my restaurant")]
         public void ThenIHaveSuccessfullyRegisteredMyRestaurant()
         {
-           Assert.That(_restaurantSignUpPage.Title().Equals("Thank you for getting in touch!"), "Unable to register restaurant.");
+            if (_wizard)
+            {
+                Assert.That(_restaurantSignUpPage.Title().Equals("Thank you for getting in touch!"), "Unable to register restaurant.");
+            }
+            else
+            {
+                Assert.That(_signUpPage.Title().Equals("Thank you for getting in touch!"), "Unable to register restaurant.");
+            }
+         
         }
-        
-        [Then(@"I have been I cannot be logged in")]
-        public void ThenIHaveBeenICannotBeLoggedIn()
+
+        [Then(@"I have been logged into my portal")]
+        public void ThenIHaveBeenLoggedIntoMyPortal()
         {
-            Assert.That(_loginPage.HasLoggedIn().Equals(true), "User was able to login");
+            Assert.That(_homePage.HasLoggedIn().Equals(true), "User was unable to login");
         }
 
         #endregion
     }
-
-
 }

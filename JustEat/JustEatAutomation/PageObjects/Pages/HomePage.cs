@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using JustEatAutomation.Utilities;
+﻿using JustEatAutomation.Utilities;
 using OpenQA.Selenium;
 
 namespace JustEatAutomation.PageObjects.Pages
@@ -15,8 +10,7 @@ namespace JustEatAutomation.PageObjects.Pages
         private readonly By _postCodeTxtBox = By.Id("postcode");
         private readonly By _restaurantSignUpLink = By.LinkText("Restaurant sign up");
         private readonly By _loginLink = By.LinkText("Log in");
-
-        // private readonly By _restaurantInterest = By.LinkText("Register interest");
+        private readonly By _loginMessage = By.Id("data-test-header-account-name");
 
         public HomePage(IWebDriver driver)
         {
@@ -43,6 +37,11 @@ namespace JustEatAutomation.PageObjects.Pages
         public void GoToLoginPage()
         {
             _webDriver.FindElement(_loginLink).Click();
+        }
+
+        public bool HasLoggedIn()
+        {
+            return _webDriver.FindElement(_loginMessage).Displayed;
         }
     }
 }

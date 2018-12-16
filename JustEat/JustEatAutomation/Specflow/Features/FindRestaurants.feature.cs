@@ -94,35 +94,35 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void SignUpARestaurant(string firstname, string lastname, string mobile, string email, string restaurant, string street, string city, string postcode, string cuisine, string status, string drivers, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sign up a restaurant", null, exampleTags);
-#line 12
+#line 11
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 13
+#line 12
 testRunner.Given("I want to sign up to a restaurant", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 14
+#line 13
 testRunner.When(string.Format("I provide my \'{0}\' and \'{1}\' and \'{2}\' and \'{3}\' and \'{4}\' and \'{5}\' and \'{6}\' an" +
                         "d \'{7}\' and \'{8}\' and \'{9}\' and \'{10}\'", firstname, lastname, mobile, email, restaurant, street, city, postcode, cuisine, status, drivers), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 15
+#line 14
 testRunner.Then("I have successfully registered my restaurant", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Cannot login to the system as an unknown user")]
-        [NUnit.Framework.TestCaseAttribute("test@testme.com", "test123!A", null)]
-        public virtual void CannotLoginToTheSystemAsAnUnknownUser(string email, string password, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("Can login to the system successfully")]
+        [NUnit.Framework.TestCaseAttribute("testweb007@mailinator.com", "Qwerty007", null)]
+        public virtual void CanLoginToTheSystemSuccessfully(string email, string password, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cannot login to the system as an unknown user", null, exampleTags);
-#line 20
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Can login to the system successfully", null, exampleTags);
+#line 19
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 21
+#line 20
 testRunner.Given("I want to login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 22
+#line 21
 testRunner.When(string.Format("I provide \'{0}\' and \'{1}\'", email, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 23
-testRunner.Then("I have been I cannot be logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 22
+testRunner.Then("I have been logged into my portal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

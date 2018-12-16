@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using JustEatAutomation.Utilities;
+﻿using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
@@ -13,7 +7,6 @@ namespace JustEatAutomation.PageObjects.Pages
     public class RestaurantSignUpPage
     {
         private readonly IWebDriver _webDriver;
-        private readonly WebDriverExtension extension;
         private readonly By _firstName = By.Name("owner.givenName");
         private readonly By _surName= By.Name("owner.familyName");
         private readonly By _addressOne = By.Name("address.lines.0");
@@ -29,7 +22,6 @@ namespace JustEatAutomation.PageObjects.Pages
         public RestaurantSignUpPage(IWebDriver driver)
         {
             this._webDriver = driver;
-            extension = new WebDriverExtension(_webDriver);
         }
 
         public void FillForm(string firstName, string surName, string addressOne, string addressTwo, string postCode)
@@ -63,7 +55,7 @@ namespace JustEatAutomation.PageObjects.Pages
         public void SubmitForm()
         {
             _webDriver.FindElement(_nextSteps).Click();
-            Thread.Sleep(3000);//ToDo use implicit wait on submit
+            Thread.Sleep(2000);//ToDo use implicit wait on submit
         }
 
         public string Title()
