@@ -3,11 +3,13 @@ Just Eat Automation Tests that test for searching for a restaurant, login and re
 
 ## Requirements
 
-### Software
+### Software and specifications
 * Windows 10 
 * Visual Studio 2017
 * .NET Framework 4.6.1
 * ReSharper (latest)
+* Chrome browser 
+* Screen with minimum resolution 1280px x 800px
 
 ### Plugins & Assemblies
 Specflow [plugin](https://marketplace.visualstudio.com/items?itemName=TechTalkSpecFlowTeam.SpecFlowforVisualStudio2017)
