@@ -40,4 +40,4 @@ System.Configuration reference added in the project from References management i
 
 2) Test "Sign up a restaurant" uses the sign up restaurant form from the home page footer to register a restaurant. The caveat with this test is that a particular sign up wizard stopped appearing the next day from when the test was written. This looks like a user based experience behaviour of the site which I have no control of. Therefore I had to update this test by introducing more page objects and adding further step options to cater for the wizard, but I had preferred to spend time in updating my explicit thread.sleep waits to implicit waits on this test.
 
-3) Test "Can login to the system successfully" is a straightforward test to let a registered user login. I have registered a dummy user using a mailinator account at the time of writing this test.
+3) Test "Can login to the system successfully" is a straightforward test to let a registered user login. I have registered a dummy user using a mailinator account at the time of writing this test. Also, it is seen that captcha is not enabled on the form when this test was written.
