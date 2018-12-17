@@ -6,7 +6,7 @@ namespace JustEatAutomation.PageObjects.Pages
     public class HomePage
     {
         private readonly IWebDriver _webDriver;
-        private readonly WebDriverExtension extension;
+        private readonly WebDriverExtension _extension;
         private readonly By _postCodeTxtBox = By.Id("postcode");
         private readonly By _restaurantSignUpLink = By.LinkText("Restaurant sign up");
         private readonly By _loginLink = By.LinkText("Log in");
@@ -15,7 +15,7 @@ namespace JustEatAutomation.PageObjects.Pages
         public HomePage(IWebDriver driver)
         {
             this._webDriver = driver;
-            extension = new WebDriverExtension(_webDriver);
+            _extension = new WebDriverExtension(_webDriver);
         }
 
         public void InsertPostcode(string postCode)
@@ -30,7 +30,7 @@ namespace JustEatAutomation.PageObjects.Pages
 
         public void GoToRestaurantSignUpForm()
         {
-             extension.ScrollToView(_webDriver.FindElement(_restaurantSignUpLink));
+             _extension.ScrollToView(_webDriver.FindElement(_restaurantSignUpLink));
             _webDriver.FindElement(_restaurantSignUpLink).Click();
         }
 

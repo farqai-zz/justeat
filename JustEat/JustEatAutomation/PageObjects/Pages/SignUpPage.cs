@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using JustEatAutomation.Utilities;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
@@ -7,6 +8,7 @@ namespace JustEatAutomation.PageObjects.Pages
    public class SignUpPage
    {
        private readonly IWebDriver _webDriver;
+       private readonly WebDriverExtension _extension;
        private readonly By _firstName = By.Id("first_name");
        private readonly By _surName = By.Id("last_name");
        private readonly By _phoneNumber = By.Id("phone");
@@ -24,6 +26,7 @@ namespace JustEatAutomation.PageObjects.Pages
        public SignUpPage(IWebDriver driver)
        {
            _webDriver = driver;
+           _extension = new WebDriverExtension(_webDriver);
        }
 
        public void FillForm(string firstName, string surName, string mobile, string email, string restaurant, string street, string city, string postCode)
@@ -59,19 +62,23 @@ namespace JustEatAutomation.PageObjects.Pages
        public void SubmitForm()
        {
            _webDriver.FindElement(_nextSteps).Click();
-           Thread.Sleep(2000);//ToDo use implicit wait on submit
-       }
+            //WaitForSuccessPage();
+            Thread.Sleep(2000);//ToDo use implicit wait on success
+        }
 
        public string Title()
        {
            return _webDriver.FindElement(_titleText).Text;
        }
 
-       private string GetCorrectStatus(string status)
+       private static string GetCorrectStatus(string status)
        {
-           if (status == "collectionOnly")
-           { return "Collection Only (No Delivery)"; }
-           return string.Empty;
+           return status == "collectionOnly" ? "Collection Only (No Delivery)" : string.Empty;
+       }
+
+       public void WaitForSuccessPage()
+       {
+           _extension.WaitForPresence(_webDriver.FindElement(_titleText));
        }
     }
 }

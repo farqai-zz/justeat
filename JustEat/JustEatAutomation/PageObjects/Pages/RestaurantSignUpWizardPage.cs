@@ -7,7 +7,7 @@ namespace JustEatAutomation.PageObjects.Pages
     public class RestaurantSignUpWizardPage
     {
         private readonly IWebDriver _webDriver;
-        private readonly WebDriverExtension extension;
+        private readonly WebDriverExtension _extension;
         private readonly By _restaurantName = By.Name("name");
         private readonly By _restaurantPostCode = By.Name("address.postalCode");
         private readonly By _restaurantMobile = By.Name("owner.phoneNumber");
@@ -19,12 +19,12 @@ namespace JustEatAutomation.PageObjects.Pages
         public RestaurantSignUpWizardPage(IWebDriver driver)
         {
             this._webDriver = driver;
-            extension = new WebDriverExtension(_webDriver);
+            _extension = new WebDriverExtension(_webDriver);
         }
 
         public void FillWizardForm(string name, string postCode, string mobile, string email)
         {
-            extension.WaitForElementToDisplay(_webDriver.FindElement(_wizardForm));
+            _extension.WaitForElementToDisplay(_webDriver.FindElement(_wizardForm));
             _webDriver.FindElement(_restaurantName).SendKeys(name);
             _webDriver.FindElement(_restaurantPostCode).SendKeys(postCode);
             _webDriver.FindElement(_restaurantMobile).SendKeys(mobile);
@@ -34,18 +34,25 @@ namespace JustEatAutomation.PageObjects.Pages
         public void SubmitWizardForm()
         {
             _webDriver.FindElement(_getStartedBtn).Click();
+            //WaitForSignUpFormToLoad();
             Thread.Sleep(2000);//ToDo use implicit wait on submit
         }
 
         public bool IsWizardPresent()
         {
-           return extension.IsElementPresent(_wizardForm);
+           return _extension.IsElementPresent(_wizardForm);
         }
 
         public void RegisterInterest()
         {
             _webDriver.FindElement(_registerInterest).Click();
+            //WaitForSignUpFormToLoad();
             Thread.Sleep(2000);//ToDo use implicit wait on submit
+        }
+
+        public void WaitForSignUpFormToLoad()
+        {
+            _extension.WaitForPresence(_webDriver.FindElement(_wizardForm));
         }
     }
 }

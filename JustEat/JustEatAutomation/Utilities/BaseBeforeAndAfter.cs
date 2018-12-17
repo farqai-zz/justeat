@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using JustEatAutomation.Utilities;
+﻿using JustEatAutomation.Utilities;
 using TechTalk.SpecFlow;
 
 namespace JustEat.Utilities

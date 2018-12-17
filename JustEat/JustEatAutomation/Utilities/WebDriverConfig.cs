@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using JustEat.Utilities;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using TechTalk.SpecFlow;
@@ -20,11 +14,6 @@ namespace JustEatAutomation.Utilities
         public WebDriverConfig(ScenarioContext context)
         {
             this._context = context;
-        }
-
-        public IWebDriver GetDriver()
-        {
-            return _driver;
         }
 
         public IWebDriver InitLocalDriver()
@@ -59,7 +48,7 @@ namespace JustEatAutomation.Utilities
             }
             catch
             {
-                // ignored
+                // ignore
             }
         }
     }

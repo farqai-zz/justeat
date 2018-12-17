@@ -1,4 +1,5 @@
-﻿using JustEatAutomation.PageObjects.Pages;
+﻿using System.Threading;
+using JustEatAutomation.PageObjects.Pages;
 using JustEatAutomation.Utilities;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -16,7 +17,7 @@ namespace JustEat.Specflow.StepDefinitions
         private RestaurantSignUpPage _restaurantSignUpPage;
         private SignUpPage _signUpPage;
         private LoginPage _loginPage;
-        private bool _wizard;
+        private bool _isWizard;
 
         #region Given
         [Given(@"I want food in ""(.*)""")]
@@ -43,12 +44,9 @@ namespace JustEat.Specflow.StepDefinitions
             _homePage.GoToLoginPage();
             _loginPage = new LoginPage(_webDriver);
         }
-
-
         #endregion
 
         #region When
-
         [When(@"I search for restaurants")]
         public void WhenISearchForRestaurants()
         {
@@ -59,8 +57,8 @@ namespace JustEat.Specflow.StepDefinitions
         public void WhenIProvideMyAndAndAndAndAndAndAndAndAndAnd(string firstName, string lastName, string mobile, string email, string restaurant, string street, string city, string postCode, string cuisine, string status, string drivers)
         {
             _restaurantSignUpWizardPage = new RestaurantSignUpWizardPage(_webDriver);
-            _wizard = _restaurantSignUpWizardPage.IsWizardPresent();
-            if (_wizard)
+            _isWizard = _restaurantSignUpWizardPage.IsWizardPresent();
+            if (_isWizard)
             {
                 _restaurantSignUpWizardPage.FillWizardForm(restaurant, postCode, mobile, email);
                 _restaurantSignUpWizardPage.SubmitWizardForm();
@@ -88,12 +86,9 @@ namespace JustEat.Specflow.StepDefinitions
             _loginPage.FillLoginForm(email, password);
             _loginPage.Login();
         }
-
-
         #endregion
 
         #region Then
-
         [Then(@"I should see some restaurants in AR(.*)AA")]
         public void ThenIShouldSeeSomeRestaurantsInARAA(string p0)
         {
@@ -105,7 +100,7 @@ namespace JustEat.Specflow.StepDefinitions
         [Then(@"I have successfully registered my restaurant")]
         public void ThenIHaveSuccessfullyRegisteredMyRestaurant()
         {
-            if (_wizard)
+            if (_isWizard)
             {
                 Assert.That(_restaurantSignUpPage.Title().Equals("Thank you for getting in touch!"), "Unable to register restaurant.");
             }
@@ -113,7 +108,6 @@ namespace JustEat.Specflow.StepDefinitions
             {
                 Assert.That(_signUpPage.Title().Equals("Thank you for getting in touch!"), "Unable to register restaurant.");
             }
-         
         }
 
         [Then(@"I have been logged into my portal")]
@@ -121,7 +115,6 @@ namespace JustEat.Specflow.StepDefinitions
         {
             Assert.That(_homePage.HasLoggedIn().Equals(true), "User was unable to login");
         }
-
         #endregion
     }
 }

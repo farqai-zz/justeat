@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
@@ -33,7 +29,7 @@ namespace JustEatAutomation.Utilities
 
         public void WaitForElementToDisplay(IWebElement element)
         {
-            WebDriverWait wait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(10));
+            WebDriverWait wait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(5));
             wait.Until(driver => element.Displayed);
         }
 
@@ -59,6 +55,16 @@ namespace JustEatAutomation.Utilities
             {
                 return false;
             }
+        }
+
+        public void WaitForPresence(IWebElement element, int timeoutSeconds = 20)
+        {
+            WebDriverWait wait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(timeoutSeconds))
+            {
+                PollingInterval = TimeSpan.FromMilliseconds(3000)
+            };
+            wait.IgnoreExceptionTypes(typeof(Exception));
+            wait.Until(webDriver => element.Displayed);
         }
     }
 }
