@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using JustEatAutomation.Utilities;
+﻿using JustEatAutomation.Utilities;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
@@ -19,7 +18,7 @@ namespace JustEatAutomation.PageObjects.Pages
         private readonly By _numberOfDrivers = By.Name("fulfilment.numberOfDeliveryDriversAtPeak");
         private readonly By _nextSteps = By.CssSelector("input[value='Next Step']");
         private readonly By _titleText = By.TagName("h1");
-        private readonly By _form = By.Id("wizard-form");
+        private readonly By _form = By.Id("nav-trigger");
 
         public RestaurantSignUpPage(IWebDriver driver)
         {
@@ -29,6 +28,7 @@ namespace JustEatAutomation.PageObjects.Pages
 
         public void FillForm(string firstName, string surName, string addressOne, string addressTwo, string postCode)
         {
+            _extension.WaitForElementToDisplay(_webDriver.FindElement(_form));
             _webDriver.FindElement(_firstName).SendKeys(firstName);
             _webDriver.FindElement(_surName).SendKeys(surName);
             _webDriver.FindElement(_addressOne).SendKeys(addressOne);
@@ -58,8 +58,6 @@ namespace JustEatAutomation.PageObjects.Pages
         public void SubmitForm()
         {
             _webDriver.FindElement(_nextSteps).Click();
-            //WaitForSignUpFormToLoad();
-            Thread.Sleep(2000);//ToDo use implicit wait on submit
         }
 
         public string Title()

@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using JustEatAutomation.Utilities;
+﻿using JustEatAutomation.Utilities;
 using OpenQA.Selenium;
 
 namespace JustEatAutomation.PageObjects.Pages
@@ -13,8 +12,9 @@ namespace JustEatAutomation.PageObjects.Pages
         private readonly By _restaurantMobile = By.Name("owner.phoneNumber");
         private readonly By _restaurantEmail = By.Name("owner.emailAddress");
         private readonly By _getStartedBtn = By.CssSelector("input[value='Get Started']");
-        private readonly By _wizardForm = By.Id("wizard-form");
         private readonly By _registerInterest = By.LinkText("Register interest");
+        private readonly By _wizardForm = By.Id("wizard-form");
+        private readonly By _nonWizardForm = By.ClassName("l-container");
 
         public RestaurantSignUpWizardPage(IWebDriver driver)
         {
@@ -34,8 +34,6 @@ namespace JustEatAutomation.PageObjects.Pages
         public void SubmitWizardForm()
         {
             _webDriver.FindElement(_getStartedBtn).Click();
-            //WaitForSignUpFormToLoad();
-            Thread.Sleep(2000);//ToDo use implicit wait on submit
         }
 
         public bool IsWizardPresent()
@@ -46,8 +44,6 @@ namespace JustEatAutomation.PageObjects.Pages
         public void RegisterInterest()
         {
             _webDriver.FindElement(_registerInterest).Click();
-            //WaitForSignUpFormToLoad();
-            Thread.Sleep(2000);//ToDo use implicit wait on submit
         }
 
         public void WaitForSignUpFormToLoad()

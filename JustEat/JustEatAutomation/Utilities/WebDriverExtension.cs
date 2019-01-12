@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
@@ -13,6 +12,7 @@ namespace JustEatAutomation.Utilities
         {
             this._webDriver = _driver;
         }
+
         public void ScrollToView(IWebElement element)
         {
             if (element.Location.Y > 200)
@@ -21,27 +21,17 @@ namespace JustEatAutomation.Utilities
             }
 
         }
+
         public void ScrollTo(int xPosition = 0, int yPosition = 0)
         {
             var js = $"window.scrollTo({xPosition}, {yPosition})";
-            ((IJavaScriptExecutor)_webDriver).ExecuteScript(js);
+            ((IJavaScriptExecutor) _webDriver).ExecuteScript(js);
         }
 
         public void WaitForElementToDisplay(IWebElement element)
         {
-            WebDriverWait wait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(5));
+            WebDriverWait wait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(10));
             wait.Until(driver => element.Displayed);
-        }
-
-        public void CheckPageIsLoaded(IWebDriver driver)
-        {
-            while (true)
-            {
-                bool ajaxIsComplete = (bool)(driver as IJavaScriptExecutor).ExecuteScript("return jQuery.active == 0");
-                if (ajaxIsComplete)
-                    return;
-                Thread.Sleep(100);
-            }
         }
 
         public bool IsElementPresent(By by)
@@ -65,6 +55,12 @@ namespace JustEatAutomation.Utilities
             };
             wait.IgnoreExceptionTypes(typeof(Exception));
             wait.Until(webDriver => element.Displayed);
+        }
+
+        public void JavaScriptWaitUntilPageIsLoaded()
+        {
+            var wait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(30));
+            wait.Until(driverMain => ((IJavaScriptExecutor)_webDriver).ExecuteScript("return document.readyState").Equals("complete"));
         }
     }
 }

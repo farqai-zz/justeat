@@ -24,7 +24,5 @@ namespace JustEatAutomation.PageObjects.Pages
         {
             _webDriver.FindElement(_loginBtn).Click();
         }
-
-     
     }
 }

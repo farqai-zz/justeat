@@ -7,6 +7,7 @@ namespace JustEatAutomation.PageObjects.Pages
     {
         private readonly IWebDriver _webDriver;
         private readonly By _restaurantsList = By.CssSelector("a[href*='/menu']");
+        public readonly By _distanceId = By.Id("Distance");
 
         public RestaurantsListPage(IWebDriver driver)
         {
