@@ -1,6 +1,6 @@
 ## How long did you spend on the technical test? What would you add to your solution if you had more time? If you didn't spend much time on the technical test then use this as an opportunity to explain what you would add.
 
-Approximately 7 hours in total was spent. I would add ability to produce screenshots and reporting on failed/passed tests in html file. I wanted to spend time resolving my explicit Thread.sleep steps but the restaurant registration test started to fail due to the way the website renders the form wizard at random, which I then had to handle by introducing further page objects and test steps. 
+Approximately 8 hours in total were spent. I would add ability to produce screenshots and reporting on failed/passed tests in html file. I wanted to spend time resolving my explicit Thread.sleep steps but the restaurant registration test started to fail due to the way the website renders the form wizard at random, which I then had to handle by introducing further page objects and test steps. 
 
 I would also spend more time improving the design pattern on the framework ideally with a developer using OOP. Looking at the feature file, I would split my feature files into respective features i.e. feature file for registration, restaurant search, login.
 
