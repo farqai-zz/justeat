@@ -30,7 +30,6 @@ namespace JustEatAutomation.PageObjects.Pages
 
        public void FillForm(string firstName, string surName, string mobile, string email, string restaurant, string street, string city, string postCode)
        {
-           _extension.JavaScriptWaitUntilPageIsLoaded();
            _webDriver.FindElement(_firstName).SendKeys(firstName);
            _webDriver.FindElement(_surName).SendKeys(surName);
            _webDriver.FindElement(_phoneNumber).SendKeys(mobile);

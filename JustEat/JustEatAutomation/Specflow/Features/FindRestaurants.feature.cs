@@ -71,10 +71,10 @@ namespace JustEatAutomation.Specflow.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Search for restaurants in an area")]
-        public virtual void SearchForRestaurantsInAnArea()
+        [NUnit.Framework.DescriptionAttribute("03 Search for restaurants in an area")]
+        public virtual void _03SearchForRestaurantsInAnArea()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Search for restaurants in an area", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("03 Search for restaurants in an area", null, ((string[])(null)));
 #line 6
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -89,11 +89,11 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Sign up a restaurant")]
+        [NUnit.Framework.DescriptionAttribute("01 Sign up a restaurant")]
         [NUnit.Framework.TestCaseAttribute("test", "user", "00000000000", "test@testme.com", "mbison", "fighter", "osaka", "sm1 3de", "Diner", "collectionOnly", "1 to 2", null)]
-        public virtual void SignUpARestaurant(string firstname, string lastname, string mobile, string email, string restaurant, string street, string city, string postcode, string cuisine, string status, string drivers, string[] exampleTags)
+        public virtual void _01SignUpARestaurant(string firstname, string lastname, string mobile, string email, string restaurant, string street, string city, string postcode, string cuisine, string status, string drivers, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sign up a restaurant", null, exampleTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("01 Sign up a restaurant", null, exampleTags);
 #line 11
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -109,11 +109,11 @@ testRunner.Then("I have successfully registered my restaurant", ((string)(null))
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Can login to the system successfully")]
+        [NUnit.Framework.DescriptionAttribute("02 Can login to the system successfully")]
         [NUnit.Framework.TestCaseAttribute("testweb007@mailinator.com", "Qwerty007", null)]
-        public virtual void CanLoginToTheSystemSuccessfully(string email, string password, string[] exampleTags)
+        public virtual void _02CanLoginToTheSystemSuccessfully(string email, string password, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Can login to the system successfully", null, exampleTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("02 Can login to the system successfully", null, exampleTags);
 #line 19
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();

@@ -1,4 +1,5 @@
-﻿using JustEatAutomation.Utilities;
+﻿using System;
+using JustEatAutomation.Utilities;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
@@ -19,6 +20,7 @@ namespace JustEatAutomation.PageObjects.Pages
         private readonly By _nextSteps = By.CssSelector("input[value='Next Step']");
         private readonly By _titleText = By.TagName("h1");
         private readonly By _form = By.Id("nav-trigger");
+        private readonly By _homeLink = By.Id("toggle-locations");
 
         public RestaurantSignUpPage(IWebDriver driver)
         {
@@ -62,6 +64,7 @@ namespace JustEatAutomation.PageObjects.Pages
 
         public string Title()
         {
+            _extension.ImplicitlyWait(5);
             return _webDriver.FindElement(_titleText).Text;
         }
 

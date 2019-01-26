@@ -30,8 +30,15 @@ namespace JustEatAutomation.Utilities
 
         public void WaitForElementToDisplay(IWebElement element)
         {
-            WebDriverWait wait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(10));
-            wait.Until(driver => element.Displayed);
+            try
+            {
+                WebDriverWait wait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(10));
+                wait.Until(driver => element.Displayed);
+            }
+            catch (WebDriverTimeoutException e)
+            {
+                
+            }
         }
 
         public bool IsElementPresent(By by)
@@ -61,6 +68,11 @@ namespace JustEatAutomation.Utilities
         {
             var wait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(30));
             wait.Until(driverMain => ((IJavaScriptExecutor)_webDriver).ExecuteScript("return document.readyState").Equals("complete"));
+        }
+
+        public void ImplicitlyWait(double seconds)
+        {
+            _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(seconds);
         }
     }
 }
